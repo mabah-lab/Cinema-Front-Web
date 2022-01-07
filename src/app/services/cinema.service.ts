@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Villes} from '../model/salles.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CinemaService {
-  public host: string= 'http://localhost:8080';
+  public host = environment.host;
 
   constructor(private  http: HttpClient) { }
 
   getVilles(){
-    return this.http.get(this.host+'/villes');
+    return this.http.get(this.host + '/villes');
   }
 
-  getCinemas(v:any) {
+  getCinemas(v: any) {
     return  this.http.get(v._links.cinemas.href);
   }
 
@@ -21,16 +23,15 @@ export class CinemaService {
     return this.http.get(c._links.salles.href);
   }
   getProjections(salle: any) {
-    let url= salle._links.projections.href.replace("{?projection}","");
-    return this.http.get(url+"?projection=p1");
+    const url = salle._links.projections.href.replace('{?projection}', '');
+    return this.http.get(url + '?projection=p1');
   }
-
   getTicketsPlaces(p: any) {
-    let url= p._links.tickets.href.replace("{?projection}","");
-    return this.http.get(url+"?projection=ticketProj");
+    const url = p._links.tickets.href.replace('{?projection}', '');
+    return this.http.get(url + '?projection=ticketProj');
   }
 
-  payerTickets(dataPayement) {
-    return this.http.post(this.host+"/payerTickets",dataPayement);
+  payerTickets(dataPayement: any) {
+    return this.http.post(this.host + '/payerTickets', dataPayement);
   }
 }

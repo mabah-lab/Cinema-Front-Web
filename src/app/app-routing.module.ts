@@ -4,8 +4,8 @@ import {CimemaComponent} from './cimema/cimema.component';
 
 const routes: Routes = [
   {path: 'cinema', component: CimemaComponent },
-  {path:'',redirectTo: 'cinema', pathMatch:'full'},
-  {path:'**',redirectTo: 'cinema'}
+  {path: '', redirectTo: 'cinema', pathMatch: 'full'},
+  {path: '**', redirectTo: 'cinema'}
 ];
 
 @NgModule({

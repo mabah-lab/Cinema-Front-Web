@@ -31,7 +31,7 @@
                       </div>
                       <div class="col-md-6">
                         <ul class="list-group">
-                          <li class="list-group-item text-center">Séances:</li>
+                          <li class="list-group-item text-center "><i class="bg-info h2">Séances:</i></li>
                           <li (click)="onGetTicketsPlaces(p)" *ngFor="let p of s.projections._embedded.projections"
                               class="list-group-item text-center clickPointer"
                               [ngClass]="p==currentProjection?'active':''" >
